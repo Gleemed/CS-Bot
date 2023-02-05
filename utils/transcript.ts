@@ -27,8 +27,8 @@ export default function transcript(interaction: ExtendedInteraction | ExtendedBu
 
         // Execute transcript generation
         let transcriptSetup: string
-        if (os === 'windows') transcriptSetup = `cd ./dce && DiscordChatExporter.Cli export -t ${process.env.TOKEN} -b -c ${interaction.channelId} -o ../transcripts/${UUID}.html`
-        if (os === 'linux') transcriptSetup = `cd ./dce && mono DiscordChatExporter.Cli export -t ${process.env.TOKEN} -b -c ${interaction.channelId} -o ../transcripts/${UUID}.html`
+        if (os === 'windows') transcriptSetup = `cd ./dce && DiscordChatExporter.Cli.exe export -t ${process.env.TOKEN} -b -c ${interaction.channelId} -o ../transcripts/${UUID}.html`
+        if (os === 'linux') transcriptSetup = `cd ./dce && mono DiscordChatExporter.Cli.exe export -t ${process.env.TOKEN} -b -c ${interaction.channelId} -o ../transcripts/${UUID}.html`
 
 
         await runCommand(transcriptSetup!)
