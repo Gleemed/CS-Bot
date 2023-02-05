@@ -14,7 +14,7 @@ export default new Event("guildMemberUpdate", async (oldMember, newMember) => {
      * AND
      * If the newMember HAS the nitro role
      */
-    if ((oldMember.roles.cache.has(oldMember.guild.roles.premiumSubscriberRole!.id)) && !(newMember.roles.cache.has(newMember.guild.roles.premiumSubscriberRole!.id))) {
+    if (!(oldMember.roles.cache.has(oldMember.guild.roles.premiumSubscriberRole!.id)) && (newMember.roles.cache.has(newMember.guild.roles.premiumSubscriberRole!.id))) {
          try {
             await db.setBoosted(oldMember.id, true)
             const logChan = client.channels.cache.get(logChannel) as unknown as TextChannel
@@ -34,7 +34,7 @@ export default new Event("guildMemberUpdate", async (oldMember, newMember) => {
      * AND
      * If the newMember DOES NOT HAVE the nitro role
      */
-    if (!(oldMember.roles.cache.has(oldMember.guild.roles.premiumSubscriberRole!.id)) && (newMember.roles.cache.has(newMember.guild.roles.premiumSubscriberRole!.id))) {
+    if ((oldMember.roles.cache.has(oldMember.guild.roles.premiumSubscriberRole!.id)) && !(newMember.roles.cache.has(newMember.guild.roles.premiumSubscriberRole!.id))) {
         try {
             await db.setBoosted(oldMember.user.id, false)
             const logChan = client.channels.cache.get(logChannel) as unknown as TextChannel
