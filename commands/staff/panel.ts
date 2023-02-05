@@ -6,7 +6,7 @@ import { panelName } from "../../configuration/tickets.json";
 
 export default new Command({
     name: "panel",
-    description: "Admin command for guild purgelist",
+    description: "Create a ticket panel.",
     permissions: ["Administrator"],
     defered: false,
     options: [
